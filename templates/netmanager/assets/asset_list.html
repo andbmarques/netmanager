@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assets</title>
+</head>
+<body>
+    {% block content %}
+        <h2>Assets</h2>
+        <span>
+            <a href="new/">New Asset</a>
+            <a href="/asset_type/">Types</a>
+        </span>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Hostname</th>
+                <th>Address</th>
+                <th>Costumer</th>
+                <th>Status</th>
+                <th>Latency</th>
+                <th>Actions</th>
+            </tr>
+            {% for asset in object_list %}
+                <tr>
+                    <td>{{ asset.pk }}</td>
+                    <td>{{ asset.hostname }}</td>
+                    <td>{{ asset.address }}</td>
+                    <td>{{ asset.costumer }}</td>
+                    <td>{{ asset.status.status }}</td>
+                    <td>{{ asset.status.latency }}ms</td>
+                    <td>
+                        <i data-lucide="eye"></i>
+                        <i data-lucide="pen"></i>
+                        <i data-lucide="trash"></i>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+</body>
+</html>

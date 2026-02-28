@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NetManager</title>
+</head>
+<body>
+
+    <h1>NetManager</h1>
+    <p>Create and View your all IT Assets</p>
+    <span>
+        <a href="/">Home</a>
+        <a href="/customers/">Customers</a>
+        <a href="/assets/">Assets</a>
+    </span>
+    <hr />
+
+    {% block content %}{% endblock %}
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons()
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+
+</body>
+</html>

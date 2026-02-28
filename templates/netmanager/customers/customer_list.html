@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Costumers</title>
+</head>
+<body>
+    {% block content %}
+        <h2>Customers</h2>
+        <span>
+            <a href="new/">New Customer</a>
+        </span>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Document</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+            {% for customer in object_list %}
+                <tr>
+                    <td>{{ customer.pk }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.document }}</td>
+                    <td>{{ customer.contact }}</td>
+                    <td>
+                        <a href="{{ customer.pk }}/">
+                            <i data-lucide="eye"></i>
+                        </a>
+                        <a href="{{ customer.pk }}/edit/">
+                            <i data-lucide="pen"></i>
+                        </a>
+                        <a href="{{ customer.pk }}/delete/">
+                            <i data-lucide="trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+</body>
+</html>

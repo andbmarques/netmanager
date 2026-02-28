@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asset Types</title>
+</head>
+<body>
+    {% block content %}
+        <h2>Asset Types</h2>
+        <a href="new/">New Type</a>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            {% for type in object_list %}
+                <tr>
+                    <td>{{ type.pk }}</td>
+                    <td>{{ type.name }}</td>
+                    <td>
+                            <i data-lucide="eye"></i>
+                            <i data-lucide="pen"></i>
+                            <i data-lucide="trash"></i>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+</body>
+</html>
