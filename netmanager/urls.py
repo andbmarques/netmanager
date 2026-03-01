@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import HomeView, CustomerCreateView, CustomerListView, AssetListView, AssetCreateView, AssetTypeCreateView, \
-    AssetTypeListView, CustomerDetailView, CustomerDeleteView, CustomerUpdateView
+    AssetTypeListView, CustomerDetailView, CustomerDeleteView, CustomerUpdateView, AssetTypeDeleteView, \
+    AssetTypeUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,7 @@ urlpatterns = [
     path('assets/', AssetListView.as_view()),
     path('assets/new/', AssetCreateView.as_view()),
     path('asset_type/', AssetTypeListView.as_view()),
-    path('asset_type/new/', AssetTypeCreateView.as_view())
+    path('asset_type/new/', AssetTypeCreateView.as_view()),
+    path('asset_type/<int:pk>/delete/', AssetTypeDeleteView.as_view()),
+    path('asset_type/<int:pk>/edit/', AssetTypeUpdateView.as_view()),
 ]

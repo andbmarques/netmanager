@@ -1,4 +1,5 @@
 from django.db.models import ProtectedError
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView, ListView, DetailView, DeleteView, UpdateView
 from .models import Customer, Asset, AssetType
@@ -70,6 +71,29 @@ class AssetTypeCreateView(CreateView):
     form_class = AssetTypeForm
     template_name = 'netmanager/asset_type/asset_type_create.html'
     success_url = '/asset_type/'
+
+class AssetTypeDeleteView(DeleteView):
+    model = AssetType
+    template_name = "netmanager/asset_type/asset_type_delete.html"
+    success_url = "/asset_type/"
+    context_object_name = "asset_type"
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            self.object = self.get_object()
+            context = self.get_context_data(object=self.object)
+
+            context['error_message'] = "It's not possible to delete the Asset Type because there are Assets linked to it."
+
+            return self.render_to_response(context)
+
+class AssetTypeUpdateView(UpdateView):
+    model = AssetType
+    form_class = AssetTypeForm
+    template_name = "netmanager/asset_type/asset_type_create.html"
+    success_url = "/asset_type/"
 
 # OTHERS
 

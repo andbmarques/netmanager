@@ -31,7 +31,15 @@
                     <td>{{ asset.address }}</td>
                     <td>{{ asset.type }}</td>
                     <td>{{ asset.costumer }}</td>
-                    <td>{{ asset.status }}</td>
+                    {% if asset.status %}
+                        <td>
+                            <i data-lucide="circle-check"></i>
+                        </td>
+                    {% else %}
+                        <td>
+                            <i data-lucide="circle-x"></i>
+                        </td>
+                    {% endif %}
                     <td>{{ asset.latency }}ms</td>
                     <td>{{ asset.updated_at }}</td>
                     <td>

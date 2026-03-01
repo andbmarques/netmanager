@@ -20,9 +20,12 @@
                     <td>{{ type.pk }}</td>
                     <td>{{ type.name }}</td>
                     <td>
-                            <i data-lucide="eye"></i>
-                            <i data-lucide="pen"></i>
-                            <i data-lucide="trash"></i>
+                            <a href="{{ type.pk }}/edit/">
+                                <i data-lucide="pen"></i>
+                            </a>
+                            <a href="{{ type.pk }}/delete/">
+                                <i data-lucide="trash"></i>
+                            </a>
                     </td>
                 </tr>
             {% endfor %}
