@@ -12,6 +12,11 @@
         <a href="/">Home</a>
         <a href="/customers/">Customers</a>
         <a href="/assets/">Assets</a>
+        <a href="/admin/">Admin</a>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
     </span>
     <hr />
 
