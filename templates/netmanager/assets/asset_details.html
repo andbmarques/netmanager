@@ -10,6 +10,19 @@
         <h2>{{ asset.hostname }}</h2>
         <p>Address: {{ asset.address }}</p>
         <p>Type: {{ asset.type }}</p>
+        <p>Customer: {{ asset.customer }}</p>
+        <p>Status:
+            {% if asset.status %}
+                <td>
+                    <i data-lucide="circle-check"></i>
+                </td>
+            {% else %}
+                <td>
+                    <i data-lucide="circle-x"></i>
+                </td>
+            {% endif %}
+        </p>
+        <p>Latency: {{ asset.latency }}ms</p>
     {% endblock %}
 </body>
 </html>

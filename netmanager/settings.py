@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tailwind',
+    'theme',
+    'django_browser_reload',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'netmanager.middleware.LoginRequiredMiddleware'
+    'netmanager.middleware.LoginRequiredMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware'
 ]
 
 ROOT_URLCONF = 'netmanager.urls'
@@ -122,3 +126,5 @@ STATIC_URL = 'static/'
 LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL="/"
 LOGOUT_REDIRECT_URL="login"
+
+TAILWIND_APP_NAME = 'theme'

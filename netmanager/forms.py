@@ -11,7 +11,7 @@ class CustomerForm(forms.ModelForm):
 class AssetForm(forms.ModelForm):
     class Meta:
         model = Asset
-        fields = ['hostname', 'address', 'type', 'costumer']
+        fields = ['hostname', 'address', 'type', 'customer']
 
 class AssetTypeForm(forms.ModelForm):
     class Meta:

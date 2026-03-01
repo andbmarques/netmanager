@@ -9,7 +9,7 @@ class CostumerAdmin(admin.ModelAdmin):
 
 @admin.register(Asset)
 class AssetAdmin(admin.ModelAdmin):
-    list_display = ['hostname', 'address', 'type', 'status', 'costumer']
+    list_display = ['hostname', 'address', 'type', 'status', 'customer']
 
 @admin.register(AssetType)
 class AssetTypeAdmin(admin.ModelAdmin):

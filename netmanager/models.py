@@ -21,7 +21,7 @@ class Asset(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)
     latency = models.FloatField(null=True, default=0)
-    costumer = models.ForeignKey(
+    customer = models.ForeignKey(
         Customer,
         on_delete=models.PROTECT
     )
