@@ -43,9 +43,15 @@
                     <td>{{ asset.latency }}ms</td>
                     <td>{{ asset.updated_at }}</td>
                     <td>
-                        <i data-lucide="eye"></i>
-                        <i data-lucide="pen"></i>
-                        <i data-lucide="trash"></i>
+                        <a href="{{ asset.pk }}/">
+                            <i data-lucide="eye"></i>
+                        </a>
+                        <a href="{{ asset.pk }}/edit/">
+                            <i data-lucide="pen"></i>
+                        </a>
+                        <a href="{{ asset.pk }}/delete/">
+                            <i data-lucide="trash"></i>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

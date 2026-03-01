@@ -14,11 +14,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from os import name
+
 from django.contrib import admin
 from django.urls import path, include
 from .views import HomeView, CustomerCreateView, CustomerListView, AssetListView, AssetCreateView, AssetTypeCreateView, \
     AssetTypeListView, CustomerDetailView, CustomerDeleteView, CustomerUpdateView, AssetTypeDeleteView, \
-    AssetTypeUpdateView
+    AssetTypeUpdateView, AssetDeleteView, AssetDetailView, AssetUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +33,9 @@ urlpatterns = [
     path('customers/<int:pk>/edit/', CustomerUpdateView.as_view()),
     path('assets/', AssetListView.as_view()),
     path('assets/new/', AssetCreateView.as_view()),
+    path('assets/<int:pk>/delete/', AssetDeleteView.as_view()),
+    path('assets/<int:pk>/edit/', AssetUpdateView.as_view()),
+    path('assets/<int:pk>/', AssetDetailView.as_view(), name="asset-detail"),
     path('asset_type/', AssetTypeListView.as_view()),
     path('asset_type/new/', AssetTypeCreateView.as_view()),
     path('asset_type/<int:pk>/delete/', AssetTypeDeleteView.as_view()),

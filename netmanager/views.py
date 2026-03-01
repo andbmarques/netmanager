@@ -59,6 +59,35 @@ class AssetCreateView(CreateView):
     template_name = 'netmanager/assets/asset_create.html'
     success_url = '/assets/'
 
+class AssetDeleteView(DeleteView):
+    model = Asset
+    template_name = "netmanager/assets/asset_delete.html"
+    success_url = "/assets/"
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            self.object = self.get_object()
+            context = self.get_context_data(object=self.object)
+
+            context['error_message'] = "It's not possible to delete the Asset because there are objects linked to it."
+
+            return self.render_to_response(context)
+
+class AssetDetailView(DetailView):
+    model = Asset
+    template_name = "netmanager/assets/asset_details.html"
+    context_object_name = "asset"
+
+class AssetUpdateView(UpdateView):
+    model = Asset
+    form_class = AssetForm
+    template_name = "netmanager/assets/asset_create.html"
+
+    def get_success_url(self):
+        return reverse_lazy("asset-detail", kwargs={"pk": self.object.pk})
+
 # ASSETS TYPES
 
 class AssetTypeListView(ListView):
