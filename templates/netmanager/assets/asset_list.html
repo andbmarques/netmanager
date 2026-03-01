@@ -7,55 +7,60 @@
 </head>
 <body>
     {% block content %}
-        <h2>Assets</h2>
-        <span>
-            <a href="new/">New Asset</a>
-            <a href="/asset_type/">Types</a>
-        </span>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Hostname</th>
-                <th>Address</th>
-                <th>Type</th>
-                <th>Customer</th>
-                <th>Status</th>
-                <th>Latency</th>
-                <th>Last update</th>
-                <th>Actions</th>
-            </tr>
-            {% for asset in object_list %}
+        <div class="flex flex-col w-full p-4 gap-4">
+            <h2 class="title-page">Assets</h2>
+            <div class="flex gap-4 items-center">
+                <a href="new/" class="btn-primary">
+                    <i data-lucide="plus"></i>
+                    New Asset
+                </a>
+                <a href="/asset_type/">Types</a>
+            </div>
+            <table>
                 <tr>
-                    <td>{{ asset.pk }}</td>
-                    <td>{{ asset.hostname }}</td>
-                    <td>{{ asset.address }}</td>
-                    <td>{{ asset.type }}</td>
-                    <td>{{ asset.customer }}</td>
-                    {% if asset.status %}
-                        <td>
-                            <i data-lucide="circle-check"></i>
-                        </td>
-                    {% else %}
-                        <td>
-                            <i data-lucide="circle-x"></i>
-                        </td>
-                    {% endif %}
-                    <td>{{ asset.latency }}ms</td>
-                    <td>{{ asset.updated_at }}</td>
-                    <td>
-                        <a href="{{ asset.pk }}/">
-                            <i data-lucide="eye"></i>
-                        </a>
-                        <a href="{{ asset.pk }}/edit/">
-                            <i data-lucide="pen"></i>
-                        </a>
-                        <a href="{{ asset.pk }}/delete/">
-                            <i data-lucide="trash"></i>
-                        </a>
-                    </td>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Hostname</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <th>Customer</th>
+                    <th>Latency</th>
+                    <th>Last update</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for asset in object_list %}
+                    <tr>
+                        <td>{{ asset.pk }}</td>
+                        {% if asset.status %}
+                            <td class="">
+                                <i data-lucide="circle-check"></i>
+                            </td>
+                        {% else %}
+                            <td class="">
+                                <i class="size-4" data-lucide="circle-x"></i>
+                            </td>
+                        {% endif %}
+                        <td>{{ asset.hostname }}</td>
+                        <td>{{ asset.address }}</td>
+                        <td>{{ asset.type }}</td>
+                        <td>{{ asset.customer }}</td>
+                        <td>{{ asset.latency }}ms</td>
+                        <td>{{ asset.updated_at }}</td>
+                        <td class="actions-container">
+                            <a href="{{ asset.pk }}/">
+                                <i data-lucide="eye"></i>
+                            </a>
+                            <a href="{{ asset.pk }}/edit/">
+                                <i data-lucide="pen"></i>
+                            </a>
+                            <a href="{{ asset.pk }}/delete/">
+                                <i data-lucide="trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% endblock %}
 </body>
 </html>

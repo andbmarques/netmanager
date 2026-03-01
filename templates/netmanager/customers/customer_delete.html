@@ -7,18 +7,23 @@
 </head>
 <body>
     {% block content %}
-        <h2>Delete {{ customer.name }}?</h2>
-        <p>Are you sure you want to delete the user {{ customer.name }}?</p>
-        {% if error_message %}
-            <p>{{ error_message }}</p>
-        {% endif %}
-        <form method="post">
-            {% csrf_token %}
-            <span>
-                <button type="submit">Yes</button>
-                <a href="/customers/">No</a>
-            </span>
-        </form>
+        <div class="flex flex-col w-full p-4 gap-4">
+            <h2 class="title-page">Delete {{ customer.name }}?</h2>
+            <p>Are you sure you want to delete the user <strong>{{ customer.name }}</strong>?</p>
+            {% if error_message %}
+                <p class="errorlist">{{ error_message }}</p>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="flex gap-4 items-center">
+                    <button class="btn-primary bg-red-700 px-8"  type="submit">
+                        <i class="size-4" data-lucide="trash"></i>
+                        Yes
+                    </button>
+                    <a href="/customers/">No</a>
+                </div>
+            </form>
+        </div>
     {% endblock %}
 </body>
 </html>

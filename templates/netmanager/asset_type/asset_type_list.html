@@ -7,29 +7,40 @@
 </head>
 <body>
     {% block content %}
-        <h2>Asset Types</h2>
-        <a href="new/">New Type</a>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-            {% for type in object_list %}
+        <div class="flex flex-col w-full p-4 gap-4">
+            <h2 class="title-page">Asset Types</h2>
+            <div class="flex gap-4 items-center">
+                <a href="/assets/" class="flex gap-2 items-center">
+                    <i data-lucide="undo-2" class="size-4"></i>
+                    Assets
+                </a>
+                <a href="new/" class="btn-primary">
+                    <i data-lucide="plus"></i>
+                    New Type
+                </a>
+            </div>
+            <table>
                 <tr>
-                    <td>{{ type.pk }}</td>
-                    <td>{{ type.name }}</td>
-                    <td>
-                            <a href="{{ type.pk }}/edit/">
-                                <i data-lucide="pen"></i>
-                            </a>
-                            <a href="{{ type.pk }}/delete/">
-                                <i data-lucide="trash"></i>
-                            </a>
-                    </td>
+                    <th>ID</th>
+                    <th class="w-full">Name</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for type in object_list %}
+                    <tr>
+                        <td>{{ type.pk }}</td>
+                        <td>{{ type.name }}</td>
+                        <td class="actions-container">
+                                <a href="{{ type.pk }}/edit/">
+                                    <i data-lucide="pen"></i>
+                                </a>
+                                <a href="{{ type.pk }}/delete/">
+                                    <i data-lucide="trash"></i>
+                                </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% endblock %}
 </body>
 </html>

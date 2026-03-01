@@ -1,26 +1,50 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
 <head>
     {% tailwind_css %}
     <meta charset="UTF-8">
     <title>NetManager</title>
 </head>
-<body>
+<body class="h-full flex row">
 
-    <h1>NetManager</h1>
-    <p>Create and View your all IT Assets</p>
-    <span>
-        <a href="/">Home</a>
-        <a href="/customers/">Customers</a>
-        <a href="/assets/">Assets</a>
-        <a href="/admin/">Admin</a>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-    </span>
-    <hr />
+    <div class="flex flex-col w-20% h-full bg-gray-800 text-white items-center justify-between px-4 py-10">
+        <div class="flex flex-col items-center gap-2">
+            <span class="flex flex-row items-center gap-2">
+                <i data-lucide="waypoints"></i>
+                <h1 class="text-2xl font-bold">NetManager</h1>
+            </span>
+        <p class="text-gray-400 text-center">Create and View your all IT Assets</p>
+        </div>
+        <div class="flex flex-col w-full items-center gap-2">
+            <a href="/" class="sidebar-btn">
+                <i data-lucide="house"></i>
+                Home
+            </a>
+            <a href="/customers/" class="sidebar-btn">
+                <i data-lucide="user"></i>
+                Customers
+            </a>
+            <a href="/assets/" class="sidebar-btn">
+                <i data-lucide="box"></i>
+                Assets
+            </a>
+            <a href="/admin/" class="sidebar-btn">
+                <i data-lucide="user-star"></i>
+                Admin
+            </a>
+
+        </div>
+        <div class="flex flex-col w-full items-center">
+            <form class="w-full" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="sidebar-btn w-full" type="submit">
+                    <i data-lucide="log-out"></i>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </div>
 
     {% block content %}{% endblock %}
 

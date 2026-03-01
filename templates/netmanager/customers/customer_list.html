@@ -7,38 +7,43 @@
 </head>
 <body>
     {% block content %}
-        <h2>Customers</h2>
-        <span>
-            <a href="new/">New Customer</a>
-        </span>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Document</th>
-                <th>Contact</th>
-                <th>Actions</th>
-            </tr>
-            {% for customer in object_list %}
+        <div class="flex flex-col w-full p-4 gap-4">
+            <h2 class="title-page">Customers</h2>
+            <span>
+                <a href="new/" class="btn-primary">
+                    <i data-lucide="plus"></i>
+                    New Customer
+                </a>
+            </span>
+            <table>
                 <tr>
-                    <td>{{ customer.pk }}</td>
-                    <td>{{ customer.name }}</td>
-                    <td>{{ customer.document }}</td>
-                    <td>{{ customer.contact }}</td>
-                    <td>
-                        <a href="{{ customer.pk }}/">
-                            <i data-lucide="eye"></i>
-                        </a>
-                        <a href="{{ customer.pk }}/edit/">
-                            <i data-lucide="pen"></i>
-                        </a>
-                        <a href="{{ customer.pk }}/delete/">
-                            <i data-lucide="trash"></i>
-                        </a>
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Document</th>
+                    <th>Contact</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for customer in object_list %}
+                    <tr>
+                        <td>{{ customer.pk }}</td>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.document }}</td>
+                        <td>{{ customer.contact }}</td>
+                        <td class="actions-container">
+                            <a href="{{ customer.pk }}/">
+                                <i data-lucide="eye"></i>
+                            </a>
+                            <a href="{{ customer.pk }}/edit/">
+                                <i data-lucide="pen"></i>
+                            </a>
+                            <a href="{{ customer.pk }}/delete/">
+                                <i data-lucide="trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% endblock %}
 </body>
 </html>

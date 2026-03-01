@@ -7,22 +7,24 @@
 </head>
 <body>
     {% block content %}
-        <h2>{{ asset.hostname }}</h2>
-        <p>Address: {{ asset.address }}</p>
-        <p>Type: {{ asset.type }}</p>
-        <p>Customer: {{ asset.customer }}</p>
-        <p>Status:
-            {% if asset.status %}
-                <td>
-                    <i data-lucide="circle-check"></i>
-                </td>
-            {% else %}
-                <td>
-                    <i data-lucide="circle-x"></i>
-                </td>
-            {% endif %}
-        </p>
-        <p>Latency: {{ asset.latency }}ms</p>
+        <div class="flex flex-col w-full p-4 gap-4">
+            <h2 class="title-page">{{ asset.hostname }}</h2>
+            <p>Address: {{ asset.address }}</p>
+            <p>Type: {{ asset.type }}</p>
+            <p>Customer: {{ asset.customer }}</p>
+            <p>Status:
+                {% if asset.status %}
+                    <td>
+                        <i data-lucide="circle-check"></i>
+                    </td>
+                {% else %}
+                    <td>
+                        <i data-lucide="circle-x"></i>
+                    </td>
+                {% endif %}
+            </p>
+            <p>Latency: {{ asset.latency }}ms</p>
+        </div>
     {% endblock %}
 </body>
 </html>

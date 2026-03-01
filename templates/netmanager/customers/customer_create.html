@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,24 @@
     <title>New Costumer</title>
 </head>
 <body>
-    <h1>New Customer</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <span>
-            <button type="submit">Save</button>
-            <a href="/customers/">Cancel</a>
-        </span>
-    </form>
+    {% block content %}
+        <div class="flex flex-col w-full p-4 gap-4">
+            <div class="flex gap-2 items-center">
+                <i class="size-4" data-lucide="user"></i>
+                <h2 class="title-page">New Customer</h2>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="flex items-center gap-4">
+                    <button type="submit" class="btn-primary px-8">
+                        <i class="size-4" data-lucide="save"></i>
+                        Save
+                    </button>
+                    <a href="/customers/">Cancel</a>
+                </div>
+            </form>
+        </div>
+    {% endblock %}
 </body>
 </html>

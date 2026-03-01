@@ -1,15 +1,72 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" class="h-full">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | NetManager</title>
+    <link rel="stylesheet" href="{% static 'css/dist/styles.css' %}">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    <h2>Login</h2>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Entrar</button>
-    </form>
+<body class="h-full bg-gray-50 flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full">
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center size-12 bg-gray-700 rounded-lg shadow-lg mb-4">
+                <i data-lucide="waypoints" class="text-white size-7"></i>
+            </div>
+            <h1 class="text-3xl font-extrabold text-gray-900">NetManager</h1>
+            <p class="text-gray-500 mt-2">Enter your login credentials.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+            {% if form.errors %}
+                <div class="mb-4 p-3 bg-red-50 border-l-4 border-red-500 text-red-700 text-sm">
+                    Invalid Username or Password.
+                </div>
+            {% endif %}
+
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+
+                <div>
+                    <label for="id_username" class="block text-sm font-semibold text-gray-700 mb-1">User</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <i data-lucide="user" class="size-4"></i>
+                        </span>
+                        <input type="text" name="username" id="id_username" required
+                               class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all"
+                               placeholder="username">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="id_password" class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+                            <i data-lucide="lock" class="size-4"></i>
+                        </span>
+                        <input type="password" name="password" id="id_password" required
+                               class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all"
+                               placeholder="••••••••">
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 rounded-lg shadow-lg transform active:scale-[0.98] transition-all duration-150">
+                    Login
+                </button>
+            </form>
+        </div>
+
+        <p class="text-center text-gray-400 text-sm mt-8">
+            &copy; 2026 github.com/andbmarques
+        </p>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

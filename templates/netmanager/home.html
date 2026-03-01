@@ -7,9 +7,21 @@
 </head>
 <body>
     {% block content %}
-        <h2>Home</h2>
-        <p>Assets: {{ assets.count }}</p>
-        <p>Customers: {{ customers.count }}</p>
+        <div class="flex flex-col w-full p-4 gap-4">
+            <h2 class="title-page">
+                Home
+            </h2>
+            <div class="flex gap-4 w-full">
+                <div class="flex  items-center gap-4 bg-gray-700 w-full text-white px-8 py-4 rounded-md">
+                    <i data-lucide="box"></i>
+                    <p class="text-3xl"><strong>Assets:</strong> {{ assets.count }}</p>
+                </div>
+                <div class="flex  items-center gap-4 bg-gray-700 w-full text-white px-8 py-4 rounded-md">
+                    <i data-lucide="user"></i>
+                    <p class="text-3xl"><strong>Customers:</strong> {{ customers.count }}</p>
+                </div>
+            </div>
+        </div>
     {% endblock %}
 </body>
 </html>
