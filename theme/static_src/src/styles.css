@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/**
+  * A catch-all path to Django template files, JavaScript, and Python files
+  * that contain Tailwind CSS classes and will be scanned by Tailwind to generate the final CSS file.
+  *
+  * If your final CSS file is not being updated after code changes, you may want to broaden or narrow
+  * the scope of this path.
+  */
+@source "../../../**/*.{html,py,js}";
+
+@theme {
+
+  --color-brand-blue: #007ace;
+  --color-brand-dark: #0f172a;
+  --color-status-online: #10b981;
+
+  --font-sans: "Inter", "ui-sans-serif", "system-ui";
+}
+
+@layer components {
+    .sidebar-btn {
+        @apply flex flex-row gap-2 py-2 hover:bg-gray-900 w-full items-center justify-center rounded-md cursor-pointer no-underline
+    }
+    .title-page {
+        @apply text-xl font-medium
+    }
+    .btn-primary {
+        @apply bg-gray-600 p-2 rounded-md text-white flex w-fit gap-2 hover:bg-gray-500 cursor-pointer no-underline items-center font-medium
+    }
+    .actions-container {
+        @apply flex gap-2
+    }
+}
+
+@layer base {
+    table {
+    @apply w-full text-left border-separate border-spacing-0 overflow-hidden rounded-lg border border-gray-200 shadow-sm;
+  }
+
+  thead {
+    @apply bg-gray-50;
+  }
+
+  th {
+    @apply p-4 text-xs font-semibold uppercase tracking-wider text-gray-600 border-b border-gray-200;
+  }
+
+  td {
+    @apply p-4 text-sm text-gray-700 border-b border-gray-100 bg-white;
+  }
+
+  tbody tr:nth-child(even) td {
+    @apply bg-gray-50/50;
+  }
+
+  tbody tr:hover td {
+    @apply bg-blue-50/50 transition-colors duration-200;
+  }
+
+  input {
+      @apply p-2 rounded-md border-2 border-gray-500
+  }
+
+  .select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.5rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+      @apply w-full px-3 py-2 bg-white border border-gray-300 rounded-lg shadow-sm
+           focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue
+           text-sm text-gray-700 transition-all duration-200 cursor-pointer;
+  }
+
+  form p {
+      @apply mb-4 flex flex-col gap-1;
+  }
+
+  label {
+      @apply text-sm text-gray-800;
+  }
+
+  a {
+      @apply hover:underline;
+  }
+
+  i {
+      @apply bg-red-500 hover:bg-gray-800
+  }
+
+  .errorlist {
+    @apply text-red-600 text-xs font-medium mt-1 list-none p-0;
+  }
+
+  .is-invalid {
+    @apply border-red-500 bg-red-50 focus:ring-red-500/20 focus:border-red-500;
+  }
+}
